@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Contacts</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1>Contacts</h1>
+		</header>
+		<main>
+			<ul>
+				<li th:each="contact : ${contacts}">
+					<a th:href="@{|/contacts/${contact.id}|}" th:text="${contact.name}">Name</a>: 
+					<span th:text="${contact.phoneNumber}">Phone Number</span>
+				</li>
+			</ul>
+		</main>
+		<footer>
+			<small>&copy; 2018</small>
+		</footer>
+	</div>	
+</body>
+</html>

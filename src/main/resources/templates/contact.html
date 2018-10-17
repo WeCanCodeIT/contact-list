@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title th:text="${contact.name}">Contact</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<div class="container">
+		<header>
+			<h1 th:text="${contact.name}">Name</h1>
+		</header>
+		<main>
+			<ul>
+				<li>
+					<h2>Address</h2>
+					<address th:text="${contact.address}">Contact Address</address>
+				</li>
+				<li>
+					<h2>Phone Number</h2>
+					<p th:text="${contact.phoneNumber}">Contact Phone Number</p>
+				</li>
+			</ul>
+		</main>
+		<footer>
+			<a href="/contacts">Back Home</a>
+			<small>&copy; 2018</small>
+		</footer>
+	</div>	
+</body>
+</html>
