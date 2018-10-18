@@ -12,8 +12,12 @@
 		<main>
 			<ul>
 				<li th:each="contact : ${contacts}">
-					<a th:href="@{|/contacts/${contact.id}|}" th:text="${contact.name}">Name</a>: 
-					<span th:text="${contact.phoneNumber}">Phone Number</span>
+					<ul>
+						<li th:each="person : ${contact.people}">
+							<a th:href="|/people/${person.id}|" th:text="|${person.firstName} ${person.lastName}|"></a>:
+							<span th:text="${person.phoneNumber}"></span>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</main>

@@ -1,34 +1,44 @@
 package org.wecancodeit.contactlist;
 
-import java.util.Random;
-
 import javax.annotation.Resource;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.wecancodeit.contactlist.model.Contact;
+import org.wecancodeit.contactlist.model.Person;
 import org.wecancodeit.contactlist.repositories.ContactRepository;
+import org.wecancodeit.contactlist.repositories.PersonRepository;
 
 @Service
 public class ContactPopulator implements CommandLineRunner {
 	
 	@Resource
 	ContactRepository contactRepo;
+	
+	@Resource
+	PersonRepository personRepo;
 
 	@Override
 	public void run(String... args) throws Exception {
-		Random rng = new Random(3);
-		String[] names = {"Donny", "Aaron", "Alan"};
+		Contact contactOne = new Contact("123 Fake St.");
+		Contact contactTwo = new Contact("56 NotMyAddress St.");
+		Contact contactThree = new Contact("345 Somewhere Ave.");
+		Contact contactFour = new Contact("456 Unreal Way");
+		Contact contactFive = new Contact("1 idk rd.");
 		
-		for (int i = 0; i < 6; i++) {
-			contactRepo.save(new Contact(names[rng.nextInt() - 1], "", ""));
-		}
+		contactOne = contactRepo.save(contactOne);
+		contactTwo = contactRepo.save(contactTwo);
+		contactRepo.save(contactThree);
+		contactRepo.save(contactFour);
+		contactRepo.save(contactFive);
 		
-//		contactRepo.save(new Contact("Not Real", "123 Fake St.", "4105555555"));
-//		contactRepo.save(new Contact("Donny", "56 NotMyAddress St.", "6145555555"));
-//		contactRepo.save(new Contact("Tre", "345 Somewhere Ave.", "2165555555"));
-//		contactRepo.save(new Contact("Riley", "456 Unreal Way", "7405555555"));
-//		contactRepo.save(new Contact("Justin", "1 idk rd.", "4195555555"));
+		Person personOne = new Person("Donny", "Hamilton", "6145555555", contactOne);
+		Person personTwo = new Person("Alan", "Kostrick", "6145555555", contactTwo);
+		Person personThree = new Person("Baby", "Kostrick", "6145555555", contactTwo);
+		
+		personRepo.save(personOne);
+		personRepo.save(personTwo);
+		personRepo.save(personThree);
 	}
 
 }

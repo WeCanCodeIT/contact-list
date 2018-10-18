@@ -1,8 +1,11 @@
 package org.wecancodeit.contactlist.model;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Contact {
@@ -10,37 +13,32 @@ public class Contact {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
 	private String address;
-	private String phoneNumber;
 	
+	@OneToMany(mappedBy="contact")
+	private Collection<Person> people;
+
 	public Contact() {}
 
-	public Contact(String name, String address, String phoneNumber) {
-		this.name = name;
+	public Contact(String address) {
 		this.address = address;
-		this.phoneNumber = phoneNumber;
 	}
 
 	public Long getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public String getAddress() {
 		return address;
 	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
+	
+	public Collection<Person> getPeople() {
+		return people;
 	}
 
 	@Override
 	public String toString() {
-		return id + ") " + name + ": " + address + ", " + phoneNumber;
+		return address;
 	}
 
 }
