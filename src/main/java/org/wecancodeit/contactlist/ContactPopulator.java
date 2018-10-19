@@ -20,17 +20,21 @@ public class ContactPopulator implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Contact contactOne = new Contact("123 Fake St.");
-		Contact contactTwo = new Contact("56 NotMyAddress St.");
-		Contact contactThree = new Contact("345 Somewhere Ave.");
-		Contact contactFour = new Contact("456 Unreal Way");
-		Contact contactFive = new Contact("1 idk rd.");
+		Contact contactOne = new Contact("123 Fake St.", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n" + 
+				"tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n" + 
+				"quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n" + 
+				"consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n" + 
+				"cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n" + 
+				"proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+		Contact contactTwo = new Contact("56 NotMyAddress St.", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n" + 
+				"tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n" + 
+				"quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n" + 
+				"consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n" + 
+				"cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n" + 
+				"proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 		
 		contactOne = contactRepo.save(contactOne);
 		contactTwo = contactRepo.save(contactTwo);
-		contactRepo.save(contactThree);
-		contactRepo.save(contactFour);
-		contactRepo.save(contactFive);
 		
 		Person personOne = new Person("Donny", "Hamilton", "6145555555", contactOne);
 		Person personTwo = new Person("Alan", "Kostrick", "6145555555", contactTwo);
